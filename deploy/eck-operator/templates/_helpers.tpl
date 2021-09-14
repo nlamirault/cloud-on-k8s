@@ -42,7 +42,12 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 helm.sh/chart: {{ include "eck-operator.chart" . }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
+app.kubernetes.io/part-of: {{ include "eck-operator.name" . }}
+app.kubernetes.io/component: operator
+{{- if .Values.additionalLabels }}
+{{ toYaml .Values.additionalLabels }}
 {{- end }}
+{{- end -}}
 
 {{/*
 Selector labels

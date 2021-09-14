@@ -40,6 +40,8 @@ helm.sh/chart: {{ include "eck-operator-crds.chart" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
+app.kubernetes.io/part-of: {{ include "eck-operator-crds.name" . }}
+app.kubernetes.io/component: crds
 {{- end }}
 
 {{/*
